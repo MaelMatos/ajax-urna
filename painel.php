@@ -58,7 +58,7 @@
      <h2><i>Sistema de Votação online</i></h2>
      </center>
  </div>
-    <table border="1">
+    <table style="width:100%;">
       <tr>
      <?php
         $dados =  $con->query("select * from candidatos order by numero")->fetchAll(PDO::FETCH_ASSOC);
