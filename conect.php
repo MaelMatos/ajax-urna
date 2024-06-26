@@ -2,7 +2,7 @@
 //conexão do banco
 if($local){
     $host = "localhost:3306";
-    $database_name = "pantheon";
+    $database_name = "votacao";
     $userr = "root";
     $password = "";
 } else{

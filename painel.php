@@ -58,25 +58,24 @@
      <h2><i>Sistema de Votação online</i></h2>
      </center>
  </div>
- <div class="container-fluid">
     <table border="1">
+      <tr>
      <?php
-        $dados =  $con->query("select * from candidatos order by numero")->fetch(PDO::FETCH_ASSOC);
-
-        while ($dados){
-        	$foto = $dados['foto'];
-        	$numero = $dados['numero'];
-        	$nome = $dados['nome']; 
+        $dados =  $con->query("select * from candidatos order by numero")->fetchAll(PDO::FETCH_ASSOC);
+         $i = 0;
+        foreach ($dados as $dado){
+        	$foto = $dado['foto'];
+        	$numero = $dado['numero'];
+        	$nome = $dado['nome']; 
+            if($i==3){
+               echo "</tr><tr>";
+               $i = 0;
+            }
+         echo "<td><center><img class='fotocandidato' src='$foto'><br> <label class='numerocandidato'>$numero<br>$nome</label></center></td>";
+         $i = $i+1;
+         
+      }
            ?>
-           <td>
-           	<center>
-           	<img class="fotocandidato" src="<?php echo $foto;?>"><br>
-            <label class="numerocandidato"><?php echo $numero;?><br>
-            <?php echo $nome;?></label></center>
-          </td>
-          <?php
-           }
-          ?>
  </table>
 </div>
 </body>
