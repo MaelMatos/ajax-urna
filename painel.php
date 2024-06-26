@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Painel de Candidatos</title>
    <?php include "head.php"; ?>
+   <script>
+        function confirmavoto(val)
+        {
+          $.ajax({
+          type: 'post',
+          url: 'confirmavoto.php',
+          data: {
+               candidato:val
+          },
+          success: function (response) {
+             document.getElementById("confirmavoto").innerHTML=response; 
+          }
+          });
+        }
+</script>
 	<style>
 		 .cabecalho{
 		 	background: teal;
@@ -71,7 +86,7 @@
                echo "</tr><tr>";
                $i = 0;
             }
-         echo "<td><center><img class='fotocandidato' src='$foto'><br> <label class='numerocandidato'>$numero<br>$nome</label></center></td>";
+         echo "<td><center><img class='fotocandidato' src='$foto' onclick='confirmavoto($numero)'><br> <label class='numerocandidato'>$numero<br>$nome</label></center></td>";
          $i = $i+1;
          
       }
