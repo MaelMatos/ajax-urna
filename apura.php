@@ -70,7 +70,7 @@ foreach ($dados as $dado){
    $numero = $dado['numero'];
    $nome = $dado['nome']; 
    $votos = $con->query("select count(id) from votos where candidato=$numero")->fetch(PDO::FETCH_ASSOC);
-   $votos = $votos['id'];
+   $votos = $votos['count(id)'];
    if($i==3){
       echo "</tr><tr>";
       $i = 0;
